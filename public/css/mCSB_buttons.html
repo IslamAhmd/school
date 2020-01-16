@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from c.mta.sa/assets/site/css/mCSB_buttons.png by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Jan 2020 13:03:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="HandheldFriendly" content="true">
+<title>
+                    تسجيل طلب التحاضير
+            </title>
+<link rel="icon" type="image/png" href="../images/fav-icon.png">
+<link media="all" type="text/css" rel="stylesheet" href="bootstrap.min.css">
+<link media="all" type="text/css" rel="stylesheet" href="font-awesome.min.css">
+<link media="all" type="text/css" rel="stylesheet" href="jquery.mCustomScrollbar.css">
+<link media="all" type="text/css" rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-8 text-align-right">
+<a href="../../../index.html" class="navbar-brand"><img src="../images/logo.png" alt="LOGO"></a>
+</div>
+</div>
+<div class="row">
+<div class="col-xs-12 col-sm-3 pull-left text-align-left">
+<div class="social">
+<a href="https://www.facebook.com/www.mta.sa/?fref=ts" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
+<a href="https://twitter.com/thadeer5" tabindex="_blank" class="tw"><i class="fa fa-twitter"></i></a>
+<a href="https://www.mta.sa/" target="_blank" class="gp"><i class="fa fa-google-plus"></i></a>
+<a href="https://www.instagram.com/thader__/" target="_blank" class="inst"><i class="fa fa-instagram"></i></a>
+</div>
+</div>
+<div class="col-xs-12 col-sm-3 text-align-right">
+<p class="whats"><a href="tel:0551092444"><i class="fa fa-whatsapp right-fa"></i> 0551092444</a> </p>
+</div>
+<div class="col-xs-12 col-sm-6">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+<span class="fa fa-bars"></span>
+</button>
+</div>
+<div class="collapse navbar-collapse" id="navbar-collapse-1">
+<ul class="nav navbar-nav text-center">
+<li class="  "><a href="../../../index.html">الرئيسية</a></li>
+<li class="  "><a href="../../../contact_us.html">اتصل بنا</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="div-big-padding white-bg text-center">
+<h1 class="fa-5x">404</h1>
+<h1 class="margin-bottom">هذه الصفحه غير موجوده</h1>
+<p>اذهب الى <a href="../../../index.html"> الصفحه الرئيسيه من هنا </a></p>
+</div>
+<div id="content_new"></div>
+
+<footer class="div-small-padding">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-7 text-align-right">
+<p> جميع الحقوق محفوظة لمؤسسة التحاضير الحديثة 2019 </p>
+</div>
+<div class="col-xs-12 col-sm-5 text-align-left">
+<p>تصميم <a href="#">مؤسسة أوامر الشبكة</a></p>
+</div>
+</div>
+</div>
+</footer>
+
+<div class="pill-holder">
+<div class="btn pill-btn">الـــفـاتـــورة</div>
+<div class="pill-table mCustomScrollbar text-center">
+<table class="table">
+<thead>
+<tr class="green-bg">
+<td colspan="2">المادة</td>
+<td colspan="2">السعر</td>
+</tr>
+<tr class="blue-bg">
+<td>اسم المادة</td>
+<td>المرحلة</td>
+<td>السعر</td>
+<td><i class="fa fa-trash"></i></td>
+</tr>
+</thead>
+<tbody id="bill-tbody">
+<tr id="no_matrial_found">
+<td colspan="4">
+لاتوجد مواد مختاره حتى الان
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="green-bg">
+<td colspan="2">الاجمالى</td>
+<td colspan="2"> <span id="cart_total"> 0 </span> ريال</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+
+<div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal-dialog modal-sm" role="document">
+<div class="modal-content text-center">
+<div class="modal-header text-left">
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+<p>برجاء اختر نوع الطلب اولا</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="pre-load" id="loader"> 
+<img src="../images/loading.gif" alt="Loading...">
+</div>
+<script src="../js/jquery-1.11.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/dev.js"></script>
+<script src="../../../../www.google.com/recaptcha/api.js" async defer></script>
+<script src="../../../../bootstrapious.com/tutorial/recaptcha/validator.js" async defer></script>
+<script src="../../../../unpkg.com/jspdf%401.5.3/dist/jspdf.min.js"></script>
+<script src='../../../../www.google.com/recaptcha/api.js'></script>
+
+
+<script>
+    function verifyRecaptchaCallback(){
+        $('#rePatcha').removeAttr('disabled');
+    }
+
+    $(document).ready(function () {
+        var url = $('#url').data('url');
+        $('.set_url').attr('href', url);
+    });
+
+    $('.price_list').hover(function () {
+        if($('#select-delivery').val() == 5 || $('#select-delivery').val() == 6){
+            // alert('ops');
+            setTimeout(function () {$('.price_list_show').css("display", "none")}, 10);
+        }else {
+            setTimeout(function () {$('.thader_price').css("display", "none")}, 10);
+        }
+    });
+
+
+    $('#select-delivery').change(function () {
+        if($(this).val() == 5 || $(this).val() == 6) {
+            $('.atfal').fadeOut();
+            $('.kberat').fadeOut();
+            $('.fekriya').fadeOut();
+            $('.disapper').fadeOut();
+            //   $('.classy').fadeOut();
+            // setTimeout(function () {$('.price_list_show').css("display", "none")}, 10);
+        }else if( $(this).val() == 1){
+            $('.disapper').fadeOut();
+        }else {
+            $('.atfal').fadeIn();
+            $('.kberat').fadeIn();
+            $('.fekriya').fadeIn();
+            $('.disapper').fadeIn();
+            $('.classy').fadeIn();
+        }
+    });
+
+    $(document).ready(function () {
+        if( navigator.userAgent.match(/Android/i)
+            || navigator.userAgent.match(/webOS/i)
+            || navigator.userAgent.match(/iPhone/i)
+            || navigator.userAgent.match(/iPad/i)
+            || navigator.userAgent.match(/iPod/i)
+            || navigator.userAgent.match(/BlackBerry/i)
+            || navigator.userAgent.match(/Windows Phone/i)
+        ){
+            $('.check-mobile').css('display', 'none')
+        }
+        else {
+            return false;
+        }
+    })
+</script>
+</body>
+
+<!-- Mirrored from c.mta.sa/assets/site/css/mCSB_buttons.png by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Jan 2020 13:03:55 GMT -->
+</html>
