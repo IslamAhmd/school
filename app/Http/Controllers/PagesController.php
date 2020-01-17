@@ -15,6 +15,6 @@ class PagesController extends Controller
     }
 
     public function cart(Request $request){
-    	return "hfvrf,.lv";
+    	return "AxxA";
     }
 }

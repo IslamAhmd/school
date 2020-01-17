@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from c.mta.sa/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Jan 2020 13:03:37 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 <meta charset="UTF-8">
@@ -75,11 +74,11 @@
 </div>
 
 <h1></h1>
-<div style="width: 100%; background-color: #f2f2f2; padding: 30px">
+<!-- <div style="width: 100%; background-color: #f2f2f2; padding: 30px">
 <a data-toggle="modal" data-target="#myModal">
 <img src="{{asset('images/1577120048_57284.jpg')}}" alt="banar" class="img-responsive check-mobile" style="width: 80%; height: auto; margin: 0 auto">
 </a>
-</div>
+</div> -->
 <div class="modal fade" id="myModal" role="dialog">
 <div class="modal-dialog">
 
@@ -87,14 +86,14 @@
 <div class="modal-header">
 <h2 style="text-align: center">تحميل التطبيق</h2>
 </div>
-<div class="modal-body">
+<!-- <div class="modal-body">
 <div class="row">
 <div class="col-md-6 col-xs-6 text-center">
 <a target="_blank" href="https://play.google.com/store/apps/details?id=com.awameraait.mta">
 <i class="fa fa-android" style="font-size: 60px; color: forestgreen"></i>
 <p style="font-size: 20px;margin-top: 10px;font-weight: bold;">اندرويد</p>
 </a>
-</div>
+</div> -->
 <div class="col-md-6 col-xs-6 text-center">
 <a href="https://itunes.apple.com/sa/app/التحاضير-الحديثة/id1136744452" target="_blank">
 <i class="fa fa-apple" style="font-size: 60px; color: black "></i>
@@ -3824,19 +3823,19 @@
 <div class="modal-header">
 <button style="z-index: 999999999;" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
-<form id="options_form">
+<!-- <form id="options_form">
 <div class="modal-body" id="subject_options_view" style="height: 400px;overflow: auto;">
 </div>
 <div class="modal-footer">
 <button type="button" id="submit_options" class="btn btn-blue" data-dismiss="modal">حفظ</button>
 </div>
-</form>
+</form> -->
 </div>
 </div>
 </div>
 <div id="content_new"></div>
 
-<footer class="div-small-padding">
+<!-- <footer class="div-small-padding">
 <div class="container">
 <div class="row">
 <div class="col-xs-12 col-sm-7 text-align-right">
@@ -3847,7 +3846,7 @@
 </div>
 </div>
 </div>
-</footer>
+</footer> -->
 
 <div class="pill-holder">
 <div class="btn pill-btn">الـــفـاتـــورة</div>
@@ -3966,5 +3965,4 @@
 </script>
 </body>
 
-<!-- Mirrored from c.mta.sa/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Jan 2020 13:03:48 GMT -->
 </html>
