@@ -20,3 +20,7 @@ Route::get('/index', 'PagesController@index')->name('pages.index');
 Route::get('/contact', 'PagesController@contact')->name('pages.contact');
 
 Route::post('/carts', 'PagesController@cart')->name('pages.cart');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
