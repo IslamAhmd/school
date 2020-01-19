@@ -351,7 +351,7 @@ $(document).ready(function() {
                 });
             } else {}
         } else {
-            alert('الرجاء اختيار مواد قبل ارسال الطلب');
+            alert('ﺐﻠﻄﻟا ﻝﺎﺳﺭا ﻞﺒﻗ ﺩاﻮﻣ ﺭﺎﻴﺘﺧا ءﺎﺟﺮﻟا');
             e.preventDefault();
             return false
         }

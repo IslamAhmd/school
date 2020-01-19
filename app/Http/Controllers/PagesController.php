@@ -15,6 +15,6 @@ class PagesController extends Controller
     }
 
     public function cart(Request $request){
-    	return "AxxA";
+    	return ["AxxA", "AxxA", "AxxA"];
     }
 }

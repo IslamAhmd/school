@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<!-- Mirrored from c.mta.sa/contact_us by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Jan 2020 13:03:54 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -28,26 +27,26 @@
 <div class="row">
 <div class="col-xs-12 col-sm-3 pull-left text-align-left">
 <div class="social">
-<a href="https://www.facebook.com/www.mta.sa/?fref=ts" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
-<a href="https://twitter.com/thadeer5" tabindex="_blank" class="tw"><i class="fa fa-twitter"></i></a>
-<a href="https://www.mta.sa/" target="_blank" class="gp"><i class="fa fa-google-plus"></i></a>
-<a href="https://www.instagram.com/thader__/" target="_blank" class="inst"><i class="fa fa-instagram"></i></a>
+<a href="" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
+<a href="" target="_blank" class="tw"><i class="fa fa-twitter"></i></a>
+<a href="" target="_blank" class="gp"><i class="fa fa-google-plus"></i></a>
+<a href="" target="_blank" class="inst"><i class="fa fa-instagram"></i></a>
 </div>
 </div>
-<div class="col-xs-12 col-sm-3 text-align-right">
+<!-- <div class="col-xs-12 col-sm-3 text-align-right">
 <p class="whats"><a href="tel:0551092444"><i class="fa fa-whatsapp right-fa"></i> 0551092444</a> </p>
-</div>
-<div class="col-xs-12 col-sm-6">
+</div> -->
+<!-- <div class="col-xs-12 col-sm-6">
 <div class="navbar-header">
 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
 <span class="fa fa-bars"></span>
 </button>
-</div>
+</div> -->
 <div class="collapse navbar-collapse" id="navbar-collapse-1">
-<ul class="nav navbar-nav text-center">
-<li class="  "><a href="{{route('pages.index')}}">الرئيسية</a></li>
-<li class="  active  "><a href="{{route('pages.contact')}}">اتصل بنا</a></li>
-</ul>
+    <ul class="nav navbar-nav text-center">
+    <li class="  "><a href="{{route('pages.index')}}">الرئيسية</a></li>
+    <li class="  active  "><a href="{{route('pages.contact')}}">اتصل بنا</a></li>
+    </ul>
 </div>
 </div>
 </div>
@@ -69,7 +68,7 @@
 <div class="post_text">
 <p style="text-align: center;"><span style="font-size: 14pt;"><strong><span style="color: #800000;">للتواصل على الهاتف أو الواتس آب</span></strong></span></p>
 <p style="text-align: center;"><span style="font-size: 14pt;"><strong>فقط اتصل الآن</strong></span></p>
-<div class="_5wd4 _1nc7 _5ysy">
+<!-- <div class="_5wd4 _1nc7 _5ysy">
 <div class="_h8t">
 <div class="_5wd9 direction_ltr">
 <div class="_5wde _n4o">
@@ -83,11 +82,11 @@
 </div>
 </div>
 </div>
-</div>
+</div> -->
 <p>&nbsp;</p>
-<div class="oewak5cdf54487ad29"><h3 style="text-align: center;"><span style="font-size: 14pt;"><strong>للطلب من المملكة يمكنكم التواصل مع الأرقام الجديدة والدائمة لنا علي الواتس</strong></span></h3>
-<p style="text-align: center;"><span style="font-size: 24pt;"><a href="https://api.whatsapp.com/send?phone=966555107025" target="_blanck">966555107025</a></span></p>
-<p style="text-align: center;"><span style="font-size: 24pt;"><a href="https://api.whatsapp.com/send?phone=966557977722" target="_blanck">966557977722</a></span></p>
+<div class="oewak5cdf54487ad29"><h3 style="text-align: center;"><span style="font-size: 14pt;"><strong>ﺲﺗاﻮﻟا ﻲﻠﻋ ﺎﻨﻟ ﺔﻤﺋاﺪﻟاﻭ ﺓﺪﻳﺪﺠﻟا ﻡﺎﻗﺭﻷا ﻊﻣ ﻞﺻاﻮﺘﻟا ﻢﻜﻨﻜﻤﻳ ﺔﻜﻠﻤﻤﻟا ﻦﻣ ﺐﻠﻄﻠﻟ</strong></span></h3>
+<p style="text-align: center;"><span style="font-size: 24pt;"><a href="https://api.whatsapp.com/send?phone=966555107025" target="_blanck"></a></span></p>
+<p style="text-align: center;"><span style="font-size: 24pt;"><a href="https://api.whatsapp.com/send?phone=966557977722" target="_blanck"></a></span></p>
 <h4 style="text-align: center;"><span style="font-size: 14pt;"><img class="alignnone size-medium aligncenter" width="500" height="214"></span></h4></div><style type="text/css">@media  screen and (min-width:1201px){.oewak5cdf54487ad29{display:block}}@media  screen and (min-width:993px) and (max-width:1200px){.oewak5cdf54487ad29{display:block}}@media  screen and (min-width:769px) and (max-width:992px){.oewak5cdf54487ad29{display:block}}@media  screen and (min-width:768px) and (max-width:768px){.oewak5cdf54487ad29{display:block}}@media  screen and (max-width:767px){.oewak5cdf54487ad29{display:block}}</style>
 </div>
 </div>
@@ -99,7 +98,7 @@
 </div>
 <div id="content_new"></div>
 
-<footer class="div-small-padding">
+<!-- <footer class="div-small-padding">
 <div class="container">
 <div class="row">
 <div class="col-xs-12 col-sm-7 text-align-right">
@@ -110,10 +109,10 @@
 </div>
 </div>
 </div>
-</footer>
+</footer> -->
 
 <div class="pill-holder">
-<div class="btn pill-btn">الـــفـاتـــورة</div>
+<div class="btn pill-btn">ﺓﺭﻮـــﺗﺎـﻔـــﻟا</div>
 <div class="pill-table mCustomScrollbar text-center">
 <table class="table">
 <thead>
@@ -131,14 +130,14 @@
 <tbody id="bill-tbody">
 <tr id="no_matrial_found">
 <td colspan="4">
-لاتوجد مواد مختاره حتى الان
+ﻥﻻا ﻰﺘﺣ ﻩﺭﺎﺘﺨﻣ ﺩاﻮﻣ ﺪﺟﻮﺗﻻ
 </td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="green-bg">
-<td colspan="2">الاجمالى</td>
-<td colspan="2"> <span id="cart_total"> 0 </span> ريال</td>
+<td colspan="2">ﻰﻟﺎﻤﺟﻻا</td>
+<td colspan="2"> <span id="cart_total"> 0 </span> ﻝﺎﻳﺭ</td>
 </tr>
 </tfoot>
 </table>
@@ -152,7 +151,7 @@
 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
-<p>برجاء اختر نوع الطلب اولا</p>
+<p>ﻻﻭا ﺐﻠﻄﻟا ﻉﻮﻧ ﺮﺘﺧا ءﺎﺟﺭﺏ</p>
 </div>
 </div>
 </div>
@@ -229,5 +228,4 @@
 </script>
 </body>
 
-<!-- Mirrored from c.mta.sa/contact_us by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 15 Jan 2020 13:03:54 GMT -->
 </html>
