@@ -11,12 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-
-Route::get('/index', 'PagesController@index')->name('pages.index');
+Route::get('/', 'PagesController@index')->name('pages.index');
 Route::get('/contact', 'PagesController@contact')->name('pages.contact');
 
 Route::post('/carts', 'PagesController@cart')->name('pages.cart');
+
+Auth::routes();
+
+Route::group(['middleware' => ['auth', 'super_admin']], function(){
+
+	Route::get('/home', 'HomeController@index')->name('home');
+
+	Route::resource('users', 'UserController');
+
+});
