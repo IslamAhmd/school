@@ -67,7 +67,7 @@
                                     @if(auth()->user()->hasRole('super_admin'))
 
                                     
-                                        <a href="{{ route('users.index') }}" class="dropdown-item">Users</a>
+                                        <a href="{{ route('dashboard') }}" class="dropdown-item">DashBoard</a>
                                     
 
                                     @endif

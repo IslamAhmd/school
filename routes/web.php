@@ -19,10 +19,11 @@ Route::post('/carts', 'PagesController@cart')->name('pages.cart');
 
 Auth::routes();
 
+
 Route::group(['middleware' => ['auth', 'super_admin']], function(){
 
-	Route::get('/home', 'HomeController@index')->name('home');
+	Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
-	Route::resource('users', 'UserController');
+	Route::resource('users', 'UserController')->except(['edit', 'create', 'update', 'store']);
 
 });

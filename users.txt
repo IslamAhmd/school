@@ -1,0 +1,24 @@
+<!--               @foreach($users as $index=>$user)
+
+
+                <tr>
+                  <th scope="row">{{$index + 1}}</th>
+                  <td style="display: none;">{{ $user->id }}</th>
+                  <td> {{$user->name}} </td>
+                  <td> {{$user->email}} </td>
+                  <td>
+                    
+                    @foreach($user->roles as $role)
+
+                        {{ $role->display_name }}
+
+                    @endforeach
+
+                  </td>
+                  <td><a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm" id="editUser">Edit</a></td>
+                  <td><a href="{{ route('users.destroy', $user->id) }}" class="btn btn-primary btn-sm">delete</a></td>
+                </tr>
+
+
+              @endforeach -->
+

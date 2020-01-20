@@ -63,7 +63,7 @@
 
 
           <li class="nav-item">
-            <a href="pages/calendar.html" class="nav-link">
+            <a class="nav-link" id="usersButton">
               <i class="fas fa-users"></i>
               &nbsp;
               &nbsp;
@@ -84,7 +84,29 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 
-    
+    <div class="container">
+      
+      <div class="row">
+        
+        <div class="col-md-10 text-center" style="">
+          <table class="table table-striped" style="display: none;" id="usersTable">
+            <thead>
+              <tr>
+                <th scope="col">Index</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
   <!-- /.content-wrapper -->
@@ -94,7 +116,8 @@
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
+
+
   </aside>
   <!-- /.control-sidebar -->
 </div>
@@ -134,5 +157,49 @@
 <script src="{{ asset('dashboard/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dashboard/dist/js/demo.js')}}"></script>
+<script type="text/javascript">
+  
+  $(document).ready(function(){
+
+    $('#usersButton').click(function(){
+      $.get('{{route("users.index")}}', function(res){
+
+            res.forEach(function(user, i){
+
+                $('#usersTable tbody').append(`
+
+                    <tr id="userRow">
+
+                        <th>${i+1}</th>
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td><button href="#" class="btn btn-primary" id="deleteUser" data-id="${user.id}">delete</button></td>
+
+                    </tr>
+
+                `);
+
+            })
+
+        })
+      // fadeToggle might help
+      $('#usersTable').fadeToggle();
+
+      $('#usersTable tbody tr#userRow').remove();
+
+    });
+
+    $('#deleteUser').click(function(){
+
+        var id = $(this).data("id");
+
+        console.log(id);
+
+    });
+
+  });
+
+
+</script>
 </body>
 </html>

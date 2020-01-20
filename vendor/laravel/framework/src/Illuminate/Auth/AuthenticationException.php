@@ -53,6 +53,7 @@ class AuthenticationException extends Exception
      */
     public function redirectTo()
     {
+        
         return $this->redirectTo;
     }
 }
