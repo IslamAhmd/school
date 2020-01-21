@@ -6,7 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'ClassesTableSeeder' => $baseDir . '/database/seeds/ClassesTableSeeder.php',
+    'CreateClassesTable' => $baseDir . '/database/migrations/2020_01_21_135959_create_classes_table.php',
+    'CreateLevelsTable' => $baseDir . '/database/migrations/2020_01_21_135323_create_levels_table.php',
+    'CreateOrdersTable' => $baseDir . '/database/migrations/2020_01_21_135133_create_orders_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreateSubjectsTable' => $baseDir . '/database/migrations/2020_01_21_140016_create_subjects_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -82,6 +87,8 @@ return array(
     'Hamcrest\\Xml\\HasXPath' => $vendorDir . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
     'LaratrustSetupTables' => $baseDir . '/database/migrations/2020_01_19_113606_laratrust_setup_tables.php',
+    'LevelsTableSeeder' => $baseDir . '/database/seeds/LevelsTableSeeder.php',
+    'OrdersTableSeeder' => $baseDir . '/database/seeds/OrdersTableSeeder.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
     'PHPUnit\\Framework\\Assert' => $vendorDir . '/phpunit/phpunit/src/Framework/Assert.php',
     'PHPUnit\\Framework\\AssertionFailedError' => $vendorDir . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',
@@ -691,6 +698,7 @@ return array(
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
+    'SubjectsTableSeeder' => $baseDir . '/database/seeds/SubjectsTableSeeder.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
     'TheSeer\\Tokenizer\\Exception' => $vendorDir . '/theseer/tokenizer/src/Exception.php',
     'TheSeer\\Tokenizer\\NamespaceUri' => $vendorDir . '/theseer/tokenizer/src/NamespaceUri.php',

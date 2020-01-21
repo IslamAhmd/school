@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>AdminLTE 3 | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
@@ -158,44 +159,77 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dashboard/dist/js/demo.js')}}"></script>
 <script type="text/javascript">
+
+
+  function myFunction(){
+
+
+        $('.deleteUser').click(function(){
+
+              let id = $(this).data("id");
+              
+              console.log(id);
+
+              var token = $("meta[name='csrf-token']").attr("content");
+   
+              $.ajax(
+              {
+                  url: "/school/users/"+id,
+                  type: 'DELETE',
+                  data: {
+                      "id": id,
+                      "_token": token,
+                  },
+                  success: function (res){
+
+                      console.log(res.message);
+                      
+                  }
+              });             
+
+        });
+
+
+  }
+
   
   $(document).ready(function(){
 
-    $('#usersButton').click(function(){
-      $.get('{{route("users.index")}}', function(res){
+          $('#usersButton').click(function(){
+            $.get('{{route("users.index")}}', function(res){
 
-            res.forEach(function(user, i){
+                  res.forEach(function(user, i){
 
-                $('#usersTable tbody').append(`
+                      $('#usersTable tbody').append(`
 
-                    <tr id="userRow">
+                          <tr class="userRow" data-id="${user.id}">
 
-                        <th>${i+1}</th>
-                        <td>${user.name}</td>
-                        <td>${user.email}</td>
-                        <td><button href="#" class="btn btn-primary" id="deleteUser" data-id="${user.id}">delete</button></td>
+                              <th>${i+1}</th>
+                              <td>${user.name}</td>
+                              <td>${user.email}</td>
+                              <td><button href="#" class="btn btn-primary deleteUser" data-id="${user.id}">delete</button></td>
 
-                    </tr>
+                          </tr>
 
-                `);
+                      `);
+
+                  })
+
+                  $(document).ready(function(){
+                      
+                      myFunction();
+
+                  });
+
 
             })
+            // fadeToggle might help
+            $('#usersTable').show();
 
-        })
-      // fadeToggle might help
-      $('#usersTable').fadeToggle();
+            $('#usersTable tbody tr.userRow').remove();
 
-      $('#usersTable tbody tr#userRow').remove();
+          });
 
-    });
-
-    $('#deleteUser').click(function(){
-
-        var id = $(this).data("id");
-
-        console.log(id);
-
-    });
 
   });
 

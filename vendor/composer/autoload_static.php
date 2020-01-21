@@ -376,7 +376,12 @@ class ComposerStaticInitd8c8a15eaa47cac741caf967563b811e
     );
 
     public static $classMap = array (
+        'ClassesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClassesTableSeeder.php',
+        'CreateClassesTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_135959_create_classes_table.php',
+        'CreateLevelsTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_135323_create_levels_table.php',
+        'CreateOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_135133_create_orders_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+        'CreateSubjectsTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_140016_create_subjects_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -452,6 +457,8 @@ class ComposerStaticInitd8c8a15eaa47cac741caf967563b811e
         'Hamcrest\\Xml\\HasXPath' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Xml/HasXPath.php',
         'JsonException' => __DIR__ . '/..' . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
         'LaratrustSetupTables' => __DIR__ . '/../..' . '/database/migrations/2020_01_19_113606_laratrust_setup_tables.php',
+        'LevelsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/LevelsTableSeeder.php',
+        'OrdersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/OrdersTableSeeder.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',
@@ -1061,6 +1068,7 @@ class ComposerStaticInitd8c8a15eaa47cac741caf967563b811e
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'SubjectsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/SubjectsTableSeeder.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',

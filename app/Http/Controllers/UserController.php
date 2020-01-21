@@ -43,7 +43,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+
+        if($user->name == "super_admin"){
+
+            return ["message" => "User Can't be deleted"];
+
+        }
         
         $user->delete();
+
+        return ["message" => "User Deleted Successfully"];
+
     }
 }
