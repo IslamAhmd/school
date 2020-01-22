@@ -26,4 +26,8 @@ Route::group(['middleware' => ['auth', 'super_admin']], function(){
 
 	Route::resource('users', 'UserController')->except(['edit', 'create', 'update', 'store']);
 
+
+	Route::resource('orders', 'OrdersController')->except(['edit', 'create', 'show']);
+
+
 });

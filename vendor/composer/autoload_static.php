@@ -376,13 +376,15 @@ class ComposerStaticInitd8c8a15eaa47cac741caf967563b811e
     );
 
     public static $classMap = array (
-        'ClassesTableSeeder' => __DIR__ . '/../..' . '/database/seeds/ClassesTableSeeder.php',
-        'CreateClassesTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_135959_create_classes_table.php',
+        'CreateLevelOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_22_075120_create_level_orders_table.php',
         'CreateLevelsTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_135323_create_levels_table.php',
         'CreateOrdersTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_135133_create_orders_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateSubjectsTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_140016_create_subjects_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
+        'CreateYearLevelsTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_22_075146_create_year_levels_table.php',
+        'CreateYearSubjectsTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_22_075207_create_year_subjects_table.php',
+        'CreateYearsTable' => __DIR__ . '/../..' . '/database/migrations/2020_01_21_135959_create_years_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
@@ -1079,6 +1081,7 @@ class ComposerStaticInitd8c8a15eaa47cac741caf967563b811e
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
         'UsersTableSeeder' => __DIR__ . '/../..' . '/database/seeds/UsersTableSeeder.php',
+        'YearsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/YearsTableSeeder.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

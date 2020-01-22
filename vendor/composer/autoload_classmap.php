@@ -6,13 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'ClassesTableSeeder' => $baseDir . '/database/seeds/ClassesTableSeeder.php',
-    'CreateClassesTable' => $baseDir . '/database/migrations/2020_01_21_135959_create_classes_table.php',
+    'CreateLevelOrdersTable' => $baseDir . '/database/migrations/2020_01_22_075120_create_level_orders_table.php',
     'CreateLevelsTable' => $baseDir . '/database/migrations/2020_01_21_135323_create_levels_table.php',
     'CreateOrdersTable' => $baseDir . '/database/migrations/2020_01_21_135133_create_orders_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateSubjectsTable' => $baseDir . '/database/migrations/2020_01_21_140016_create_subjects_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
+    'CreateYearLevelsTable' => $baseDir . '/database/migrations/2020_01_22_075146_create_year_levels_table.php',
+    'CreateYearSubjectsTable' => $baseDir . '/database/migrations/2020_01_22_075207_create_year_subjects_table.php',
+    'CreateYearsTable' => $baseDir . '/database/migrations/2020_01_21_135959_create_years_table.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
     'File_Iterator_Facade' => $vendorDir . '/phpunit/php-file-iterator/src/Facade.php',
@@ -709,4 +711,5 @@ return array(
     'TheSeer\\Tokenizer\\Tokenizer' => $vendorDir . '/theseer/tokenizer/src/Tokenizer.php',
     'TheSeer\\Tokenizer\\XMLSerializer' => $vendorDir . '/theseer/tokenizer/src/XMLSerializer.php',
     'UsersTableSeeder' => $baseDir . '/database/seeds/UsersTableSeeder.php',
+    'YearsTableSeeder' => $baseDir . '/database/seeds/YearsTableSeeder.php',
 );

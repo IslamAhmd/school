@@ -75,6 +75,31 @@
             </a>
           </li>
           
+
+          <li class="nav-item has-treeview">
+            <a class="nav-link" id="optionsButton">
+              <i class="nav-icon fas fa-copy"></i>
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              <p>
+                Options
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="pages/layout/top-nav.html" class="nav-link">
+                  
+                  <p>
+                    <i class="far fa-circle nav-icon"></i>
+                    Add New Option
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -89,19 +114,9 @@
       
       <div class="row">
         
-        <div class="col-md-10 text-center" style="">
-          <table class="table table-striped" style="display: none;" id="usersTable">
-            <thead>
-              <tr>
-                <th scope="col">Index</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-              
-            </tbody>
+        <div class="col-md-12 text-center" style="">
+          <table class="table table-striped" style="display: none;" id="table">
+
           </table>
         </div>
 
@@ -160,8 +175,8 @@
 <script src="{{ asset('dashboard/dist/js/demo.js')}}"></script>
 <script type="text/javascript">
 
-
-  function myFunction(){
+  // Delete Users
+  function deleteUser(){
 
 
         $('.deleteUser').click(function(){
@@ -192,16 +207,62 @@
 
   }
 
+  // Delete Order
+  function deleteOrder(){
+
+      $('.deleteOrder').click(function(){
+
+        var id = $(this).data("id");
+
+        console.log(id);
+
+        var token = $("meta[name='csrf-token']").attr("content");
+   
+              $.ajax(
+              {
+                  url: "/school/orders/"+id,
+                  type: 'DELETE',
+                  data: {
+                      "id": id,
+                      "_token": token,
+                  },
+                  success: function (res){
+
+                      console.log(res.message);
+                      
+                  }
+              });
+
+      });
+
+  }
+
   
   $(document).ready(function(){
 
+        //  Show all Users
           $('#usersButton').click(function(){
             $.get('{{route("users.index")}}', function(res){
 
+
+                  $('#table').append(`
+
+                        <thead>
+                          <tr>
+                            <th scope="col">Index</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Display Name</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+
+                  `);
+
                   res.forEach(function(user, i){
 
-                      $('#usersTable tbody').append(`
+                      $('#table').append(`
 
+                        <tbody>
                           <tr class="userRow" data-id="${user.id}">
 
                               <th>${i+1}</th>
@@ -210,6 +271,7 @@
                               <td><button href="#" class="btn btn-primary deleteUser" data-id="${user.id}">delete</button></td>
 
                           </tr>
+                        </tbody>
 
                       `);
 
@@ -217,16 +279,76 @@
 
                   $(document).ready(function(){
                       
-                      myFunction();
+                      deleteUser();
 
                   });
 
 
             })
             // fadeToggle might help
-            $('#usersTable').show();
+            $('#table').show();
 
-            $('#usersTable tbody tr.userRow').remove();
+            $('#table tbody, #table thead').remove();
+
+          });
+
+        // show all Orders
+          $('#optionsButton').click(function(){
+
+                
+              $('#table tbody, #table thead').remove();
+
+
+              $.get('{{ route("orders.index")}}', function(res){
+
+                  // console.log(res);
+
+                  $('#table').append(`
+
+                        <thead>
+                          <tr>
+                            <th scope="col">Index</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Display Name</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+
+                  `);
+
+                  res.forEach(function(order, i){
+
+                      $('#table').append(`
+
+                        <tbody>
+                          <tr class="orderRow" data-id="${order.id}">
+
+                              <th>${i+1}</th>
+                              <td>${order.name}</td>
+                              <td>${order.display_name}</td>
+                              <td><button href="#" class="btn btn-primary deleteOrder" data-id="${order.id}">delete</button></td>
+
+                          </tr>
+                        </tbody>
+
+
+                      `);
+
+                  });
+
+                  $(document).ready(function(){
+                      
+                      deleteOrder();
+
+                  });
+
+              });
+
+
+              $('#table').show();
+
+              $('#table tbody, #table thead').remove();
+
 
           });
 

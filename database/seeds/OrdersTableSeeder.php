@@ -12,7 +12,16 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        $orders = [
+    	$orders = [
+
+    		'distribute by email',
+    		'purchase by email',
+    		'purchase by delivery',
+    		'purchase by fedex',
+    		'preparing the future'
+
+    	];
+        $orders_displayName = [
 
         	'توزيع المنهج المجاني مع عينة من التحاضير عن طريق الايميل',
         	'الشراء لكامل المادة عن طريق الايميل',
@@ -21,11 +30,12 @@ class OrdersTableSeeder extends Seeder
         	'تحاضير المستقبل'
         ];
 
-        foreach ($orders as $order) {
+        foreach ($orders as $i => $order) {
         	
         	Order::create([
 
-        		'name' => $order
+        		'name' => $order,
+        		'display_name' => $orders_displayName[$i]
 
         	]);
         }
