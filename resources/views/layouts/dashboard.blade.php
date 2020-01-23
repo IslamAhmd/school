@@ -89,7 +89,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/layout/top-nav.html" class="nav-link">
+                <a id="addOrder" class="nav-link">
                   
                   <p>
                     <i class="far fa-circle nav-icon"></i>
@@ -110,14 +110,71 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Order</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="formEditOrder">
+            <div class="modal-body">
+
+                <div class="form-group">
+                  <label>Name</label>
+                  <input type="text" name="editName" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Display Name</label>
+                  <input type="text" name="editDisplayName" class="form-control">
+                </div>
+
+            </div>
+            <div class="modal-footer"> 
+
+              <input type="submit" value="submit" class="btn btn-primary float-right">
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <div class="container">
       
       <div class="row">
         
-        <div class="col-md-12 text-center" style="">
+        <div class="col-md-12 text-center">
+
           <table class="table table-striped" style="display: none;" id="table">
 
           </table>
+
+        </div>
+
+        <div class="col-md-8" style="margin: 5% 20%;">
+
+          <p class="alert alert-success" id="orderSuccess" style="display: none;"></p>
+          <p class="alert alert-danger" id="orderFailed" style="display: none;"></p>
+          
+          <form id="formOrder" style="display: none;">
+
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Display Name</label>
+              <input type="text" name="display_name" class="form-control">
+            </div>
+            <div>
+              <input type="submit" value="submit" class="btn btn-primary float-right">
+            </div>
+
+          </form>
+
         </div>
 
       </div>
@@ -237,11 +294,74 @@
 
   }
 
+  // edit order
+  function editOrder(){
+
+    $('.editOrder').click(function(){
+
+        var id = $(this).data("id");
+
+        console.log(id);
+
+        $('.modal').modal('show');
+
+        $.get('{{ url("/orders") }}/'+id, function(res){
+
+            $('input[name=editName').val(res.name);
+            $('input[name=editDisplayName').val(res.display_name);
+
+        });
+
+        $('#formEditOrder').submit(function(e){
+
+            let name = $('input[name=editName').val();
+            let display_name = $('input[name=editDisplayName').val();
+            let token = $("meta[name='csrf-token']").attr("content");
+
+            // console.log(name, display_name);
+
+            $.ajax({
+              url : '{{ url("/orders") }}/'+id,
+              type : 'put',
+              data : {
+              'name' : name,
+              'display_name' : display_name,
+              '_token' : token
+                      }, 
+              success : function(res){
+
+                  console.log(res.message);
+
+                  $('.modal').modal('hide');
+
+              },
+              error : function(res){
+
+                  console.log(res.errors);
+
+              }
+
+
+            })
+
+            e.preventDefault();
+
+        })
+
+
+    });
+
+
+  }
+
   
   $(document).ready(function(){
 
         //  Show all Users
           $('#usersButton').click(function(){
+
+            $('#formOrder').hide();
+
             $.get('{{route("users.index")}}', function(res){
 
 
@@ -298,6 +418,9 @@
                 
               $('#table tbody, #table thead').remove();
 
+              $('#formOrder').hide();
+
+
 
               $.get('{{ route("orders.index")}}', function(res){
 
@@ -310,6 +433,7 @@
                             <th scope="col">Index</th>
                             <th scope="col">Name</th>
                             <th scope="col">Display Name</th>
+                            <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                           </tr>
                         </thead>
@@ -326,6 +450,7 @@
                               <th>${i+1}</th>
                               <td>${order.name}</td>
                               <td>${order.display_name}</td>
+                              <td><button href="#" class="btn btn-primary editOrder" data-id="${order.id}">Edit</button></td>
                               <td><button href="#" class="btn btn-primary deleteOrder" data-id="${order.id}">delete</button></td>
 
                           </tr>
@@ -339,6 +464,7 @@
                   $(document).ready(function(){
                       
                       deleteOrder();
+                      editOrder();
 
                   });
 
@@ -349,6 +475,54 @@
 
               $('#table tbody, #table thead').remove();
 
+
+          });
+
+
+          // add new order
+          $('#addOrder').click(function(){
+
+            $('#table').hide();
+
+            $('#formOrder').show();
+
+            var token = $("meta[name='csrf-token']").attr("content");
+
+            $('#formOrder').submit(function(e){
+
+              $.post('{{ route("orders.store") }}', {
+
+                  'name':$('input[name=name]').val(),
+                  'display_name':$('input[name=display_name]').val(),
+                  '_token' : token
+
+                }).done(function(res){
+
+                if(res.status == 'success'){
+
+                  // console.log("success");
+                  // $j('#orderSuccess').slideDown('1000').delay('1500').slideUp('1000');
+                  // $('#orderSuccess').text(res.message);
+
+                  $('input[name=name]').val('');
+                  $('input[name=display_name]').val('');
+
+                } else if(res.status == 'error'){
+
+                  // console.log(res.errors);
+                  // $('#orderFailed').show();
+                  // $('#orderFailed').text(res.message);
+
+                  $('input[name=name]').val('');
+                  $('input[name=display_name]').val('');
+
+                }
+
+              });
+
+              e.preventDefault();
+
+            });
 
           });
 

@@ -22,19 +22,19 @@
     <nav class="navbar">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12 col-sm-8 text-align-right">
-                    <a href="{{route('pages.index')}}" class="navbar-brand"><img src="{{asset('images/logo.png')}}" alt="LOGO"></a>
+                <div class="col-xs-12 col-sm-3 pull-left text-align-left">
+                    <a href="{{route('pages.index')}}" class="navbar-brand"><img src="{{asset('images/logo.png')}}" alt="LOGO" style="width: 256px; height: 100px; border: 0;"></a>
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-3 pull-left text-align-left">
+<!--                 <div class="col-xs-12 col-sm-3 pull-left text-align-left">
                     <div class="social">
                         <a href="" target="_blank" class="fb"><i class="fa fa-facebook"></i></a>
                         <a href="" target="_blank" class="tw"><i class="fa fa-twitter"></i></a>
                         <a href="" target="_blank" class="gp"><i class="fa fa-google-plus"></i></a>
                         <a href="" target="_blank" class="inst"><i class="fa fa-instagram"></i></a>
                     </div>
-                </div>
+                </div> -->
                 <!-- <div class="col-xs-12 col-sm-3 text-align-right">
 <p class="whats"><a href="tel:0551092444"><i class="fa fa-whatsapp right-fa"></i> 0551092444</a> </p>
 </div> -->
@@ -44,7 +44,7 @@
 <span class="fa fa-bars"></span>
 </button>
 </div> -->
-                <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <div class="text-align-right pull-right" id="navbar-collapse-1">
                     <ul class="nav navbar-nav text-center">
                         @guest
                         <li class="nav-item">

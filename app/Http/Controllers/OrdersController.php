@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use Validator;
 
 class OrdersController extends Controller
 {
@@ -14,7 +15,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::with('levels')->get();
 
         return $orders;
     }
@@ -28,9 +29,43 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // return $request->all();
+
+        $rules = [
+
+            'name' => 'required|string',
+            'display_name' => 'required|string'
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+
+            return response()->json([
+              "status" => "error",
+              "errors" => $validator->errors()
+            ]);
+
+        }
+
+        $order = Order::create($request->all());
+
+        return [
+            'status'=> 'success',
+            'message' => 'Order Added successfully'
+                ];
+
     }
 
+
+    public function show($id){
+
+        $order = Order::with('levels')->find($id);
+
+        return $order;
+
+    }
 
     /**
      * Update the specified resource in storage.
@@ -41,7 +76,33 @@ class OrdersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+
+        $rules = [
+
+            'name' => 'required|string',
+            'display_name' => 'required|string'
+
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+
+        if($validator->fails()){
+
+            return response()->json([
+              "status" => "error",
+              "errors" => $validator->errors()
+            ]);
+
+        }
+
+        $order->update($request->all());
+
+        return [
+            'status'=> 'success',
+            'message' => 'Order Updated successfully'
+                ];
+
     }
 
     /**

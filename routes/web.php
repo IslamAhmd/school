@@ -19,6 +19,8 @@ Route::post('/carts', 'PagesController@cart')->name('pages.cart');
 
 Auth::routes();
 
+Route::get('orders', 'OrdersController@index')->name('orders.index');
+
 
 Route::group(['middleware' => ['auth', 'super_admin']], function(){
 
@@ -27,7 +29,7 @@ Route::group(['middleware' => ['auth', 'super_admin']], function(){
 	Route::resource('users', 'UserController')->except(['edit', 'create', 'update', 'store']);
 
 
-	Route::resource('orders', 'OrdersController')->except(['edit', 'create', 'show']);
+	Route::resource('orders', 'OrdersController')->except(['edit', 'create', 'index']);
 
 
 });
