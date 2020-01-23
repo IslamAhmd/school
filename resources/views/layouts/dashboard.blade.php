@@ -246,7 +246,7 @@
    
               $.ajax(
               {
-                  url: "/school/users/"+id,
+                  url: '{{ url("/users") }}/'+id,
                   type: 'DELETE',
                   data: {
                       "id": id,
