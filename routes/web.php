@@ -20,6 +20,8 @@ Route::post('/carts', 'PagesController@cart')->name('pages.cart');
 Auth::routes();
 
 Route::get('orders', 'OrdersController@index')->name('orders.index');
+Route::get('levels', 'LevelController@index')->name('levels.index');
+
 
 
 Route::group(['middleware' => ['auth', 'super_admin']], function(){
@@ -30,6 +32,9 @@ Route::group(['middleware' => ['auth', 'super_admin']], function(){
 
 
 	Route::resource('orders', 'OrdersController')->except(['edit', 'create', 'index']);
+	Route::resource('levels', 'LevelController')->except(['edit', 'create', 'index']);
+	Route::post('levels/detach', 'LevelController@detach')->name('levels.detach');
+
 
 
 });

@@ -15,7 +15,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        $orders = Order::with('levels')->get();
+        $orders = Order::get();
 
         return $orders;
     }
@@ -33,7 +33,7 @@ class OrdersController extends Controller
 
         $rules = [
 
-            'name' => 'required|string',
+            'name' => 'required|string|unique:orders',
             'display_name' => 'required|string'
 
         ];
@@ -80,7 +80,7 @@ class OrdersController extends Controller
 
         $rules = [
 
-            'name' => 'required|string',
+            'name' => "required|string|unique:orders,name,$id",
             'display_name' => 'required|string'
 
         ];

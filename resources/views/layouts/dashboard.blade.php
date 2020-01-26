@@ -83,7 +83,7 @@
               &nbsp;
               &nbsp;
               <p>
-                Options
+                Orders
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
@@ -93,12 +93,38 @@
                   
                   <p>
                     <i class="far fa-circle nav-icon"></i>
-                    Add New Option
+                    Add New Order
                   </p>
                 </a>
               </li>
             </ul>
           </li>
+
+                    
+          <li class="nav-item has-treeview">
+            <a class="nav-link" id="levelsButton">
+              <i class="nav-icon fas fa-copy"></i>
+              &nbsp;
+              &nbsp;
+              &nbsp;
+              <p>
+                Levels
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a id="addLevel" class="nav-link">
+                  
+                  <p>
+                    <i class="far fa-circle nav-icon"></i>
+                    Add New Level
+                  </p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
           
         </ul>
       </nav>
@@ -148,6 +174,8 @@
         
         <div class="col-md-12 text-center">
 
+          <h1 style="display: none;" id="orderName" class="text-center"></h1>
+
           <table class="table table-striped" style="display: none;" id="table">
 
           </table>
@@ -156,8 +184,8 @@
 
         <div class="col-md-8" style="margin: 5% 20%;">
 
-          <p class="alert alert-success" id="orderSuccess" style="display: none;"></p>
-          <p class="alert alert-danger" id="orderFailed" style="display: none;"></p>
+          <p class="alert alert-success" id="success" style="display: none;"></p>
+          <p class="alert alert-danger" id="failed" style="display: none;"></p>
           
           <form id="formOrder" style="display: none;">
 
@@ -174,6 +202,30 @@
             </div>
 
           </form>
+
+
+          <form id="formLevel" style="display: none;">
+
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="levelName" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Display Name</label>
+              <input type="text" name="levelDisplay_name" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>اختيار نوع الطلب</label>
+              <select name="order_id" class="form-control" id="order_id">
+                
+              </select>
+            </div>
+            <div>
+              <input type="submit" value="submit" class="btn btn-primary float-right">
+            </div>
+
+          </form>
+
 
         </div>
 
@@ -277,7 +329,7 @@
    
               $.ajax(
               {
-                  url: "/school/orders/"+id,
+                  url: '{{ url("/orders") }}/'+id,
                   type: 'DELETE',
                   data: {
                       "id": id,
@@ -286,6 +338,7 @@
                   success: function (res){
 
                       console.log(res.message);
+
                       
                   }
               });
@@ -354,6 +407,197 @@
 
   }
 
+
+  // detach level from order
+  function detachLevel(){
+
+      $('.detachLevel').click(function(){
+
+
+          let token = $("meta[name='csrf-token']").attr("content");
+          let orderId = $(".detachLevel").attr("value");
+          let levelId = $(this).data("id");
+          console.log(orderId);
+
+          $.post("{{ url('/levels/detach') }}", {
+            'orderId' : orderId,
+            'levelId' : levelId,
+            '_token' : token
+
+          }).done(function(res){
+
+              if(res.status == 'success'){
+
+                  console.log(res.message);
+
+              } 
+
+          })
+
+
+      })
+
+  }
+
+  // show order with it's levels
+  function showOrder(){
+
+    $('.showOrder').click(function(){
+
+        var id = $(this).data("id");
+
+        // console.log(id);   
+
+        $.get('{{ url("/orders") }}/'+id, function(res){
+
+            // console.log(res);
+
+            $('#table tbody, #table thead').remove();
+
+            $('#orderName').show().html(res.display_name);
+            // $('#orderName').data(res.id);
+
+            $('#table').append(`
+
+                <thead>
+                  <tr>
+                    <th scope="col">Index</th>
+                    <th scope="col">Level Name</th>
+                    <th scope="col">Level Display Name</th>
+                    <th scope="col">Delete</th>
+                  </tr>
+                </thead>
+
+            `);
+
+            res.levels.forEach(function(level, i){
+
+
+                      $('#table').append(`
+
+                        <tbody>
+                          <tr class="levelRow" data-id="${level.id}">
+
+                              <th>${i+1}</th>
+                              <td>${level.name}</td>
+                              <td>${level.display_name}</td>
+                              <td><button href="#" class="btn btn-primary detachLevel" data-id="${level.id}" value="${res.id}">delete</button></td>
+
+                          </tr>
+                        </tbody>
+
+
+                      `);
+
+            });
+
+            $(document).ready(function(){
+                      
+              detachLevel();
+
+            });
+
+
+        })     
+
+    })
+
+  }
+
+
+  // delete level
+  function deleteLevel(){
+
+      $('.deleteLevel').click(function(){
+
+        var id = $(this).data("id");
+
+        console.log(id);
+
+        var token = $("meta[name='csrf-token']").attr("content");
+   
+              $.ajax(
+              {
+                  url: '{{ url("/levels") }}/'+id,
+                  type: 'DELETE',
+                  data: {
+                      "id": id,
+                      "_token": token,
+                  },
+                  success: function (res){
+
+                      console.log(res.message);
+
+                      
+                  }
+              });
+
+      });
+
+
+  }
+
+
+  // edit Level
+  function editLevel(){
+
+    $('.editLevel').click(function(){
+
+        var id = $(this).data("id");
+
+        console.log(id);
+
+        $('.modal').modal('show');
+
+        $.get('{{ url("/levels") }}/'+id, function(res){
+
+            $('input[name=editName').val(res.name);
+            $('input[name=editDisplayName').val(res.display_name);
+
+        });
+
+        $('#formEditOrder').submit(function(e){
+
+            let name = $('input[name=editName').val();
+            let display_name = $('input[name=editDisplayName').val();
+            let token = $("meta[name='csrf-token']").attr("content");
+
+            // console.log(name, display_name);
+
+            $.ajax({
+              url : '{{ url("/levels") }}/'+id,
+              type : 'put',
+              data : {
+              'name' : name,
+              'display_name' : display_name,
+              '_token' : token
+                      }, 
+              success : function(res){
+
+                  console.log(res.message);
+
+                  $('.modal').modal('hide');
+
+              },
+              error : function(res){
+
+                  console.log(res.errors);
+
+              }
+
+
+            })
+
+            e.preventDefault();
+
+        })
+
+
+    });
+
+
+  }
+
   
   $(document).ready(function(){
 
@@ -361,6 +605,8 @@
           $('#usersButton').click(function(){
 
             $('#formOrder').hide();
+            $('#formLevel').hide();
+
 
             $.get('{{route("users.index")}}', function(res){
 
@@ -415,6 +661,10 @@
         // show all Orders
           $('#optionsButton').click(function(){
 
+
+              $('#orderName').hide();
+              $('#formLevel').hide();
+
                 
               $('#table tbody, #table thead').remove();
 
@@ -448,7 +698,7 @@
                           <tr class="orderRow" data-id="${order.id}">
 
                               <th>${i+1}</th>
-                              <td>${order.name}</td>
+                              <td><a class="showOrder" data-id="${order.id}">${order.name}</a></td>
                               <td>${order.display_name}</td>
                               <td><button href="#" class="btn btn-primary editOrder" data-id="${order.id}">Edit</button></td>
                               <td><button href="#" class="btn btn-primary deleteOrder" data-id="${order.id}">delete</button></td>
@@ -465,6 +715,7 @@
                       
                       deleteOrder();
                       editOrder();
+                      showOrder();
 
                   });
 
@@ -525,6 +776,146 @@
             });
 
           });
+
+          // show all levels
+          $('#levelsButton').click(function(){
+
+
+              $('#orderName').hide();
+              $('#formLevel').hide();
+
+                
+              $('#table tbody, #table thead').remove();
+
+              $('#formOrder').hide();
+
+              $.get('{{ route("levels.index")}}', function(res){
+
+                  // console.log(res);
+
+                  $('#table').append(`
+
+                        <thead>
+                          <tr>
+                            <th scope="col">Index</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Display Name</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
+                          </tr>
+                        </thead>
+
+                  `);
+
+                  res.forEach(function(level, i){
+
+                      $('#table').append(`
+
+                        <tbody>
+                          <tr class="orderRow" data-id="${level.id}">
+
+                              <th>${i+1}</th>
+                              <td>${level.name}</td>
+                              <td>${level.display_name}</td>
+                              <td><button href="#" class="btn btn-primary editLevel" data-id="${level.id}">Edit</button></td>
+                              <td><button href="#" class="btn btn-primary deleteLevel" data-id="${level.id}">delete</button></td>
+
+                          </tr>
+                        </tbody>
+
+
+                      `);
+
+                  });
+
+                  $(document).ready(function(){
+                      
+                      deleteLevel();
+                      editLevel();
+
+                  });
+
+              });
+
+
+              $('#table').show();
+
+              $('#table tbody, #table thead').remove();
+
+
+          });
+
+          // add new level
+          $('#addLevel').click(function(){
+
+            $('#table').hide();
+
+            $('#formLevel').show();
+
+            $.get('{{ route("orders.index") }}', function(res){
+
+                res.forEach(function(res){
+                    // console.log(res);
+
+                    $('#order_id').append(`
+
+                        <option value="${res.id}">${res.name}</option>
+
+                    `);
+
+                })
+
+            })
+
+            $('#order_id').change(function(){
+
+                let orderId = $('#order_id :selected').val();
+                let token = $("meta[name='csrf-token']").attr("content");
+                console.log(orderId);
+
+                $('#formLevel').submit(function(e){
+
+                    $.post('{{ route("levels.store") }}', {
+
+                      'name':$('input[name=levelName]').val(),
+                      'display_name':$('input[name=levelDisplay_name]').val(),
+                      'order_id' : orderId,
+                      '_token' : token
+
+                    }).done(function(res){
+
+                        if(res.status == 'success'){
+
+                            console.log(res.message);
+                            // $j('#success').slideDown('1000').delay('1500').slideUp('1000');
+                            // $('#success').text(res.message);
+
+                            $('input[name=levelName]').val('');
+                            $('input[name=levelDisplay_name]').val('');
+
+                        } else if(res.status == 'error'){
+
+                            console.log(res.errors);
+                            // $('#failed').show();
+                            // $('#failed').text(res.message);
+
+                            $('input[name=levelName]').val('');
+                            $('input[name=levelDisplay_name]').val('');
+
+                        }
+
+
+                    });
+
+                    e.preventDefault();
+
+                });
+
+
+            })
+
+
+          })
 
 
   });
